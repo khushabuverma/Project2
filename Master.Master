@@ -1,0 +1,373 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="VivoExamWeb.Master" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Vivo Exam </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
+        rel="stylesheet">
+    <style type="text/css">
+        .content-wrapper {
+    background: #e6ecef !important;
+}
+.nav-pills .nav-link:not(.active):hover
+{
+    background-color: rgb(26, 107, 208);
+    }
+    
+    .nav-treeview>.nav-item>.nav-link.active:hover
+    {
+            background-color: rgba(21, 73, 191, 0.9); !important
+    color: #343a40;
+        }
+        </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <form id="form1" runat="server">
+    <div>
+        <div class="wrapper">
+            <!-- Navbar -->
+            <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a  href="#" class="nav-link">Home</a>
+      </li>
+    
+    </ul>
+
+  </nav>
+            <!-- /.navbar -->
+            <!-- Main Sidebar Container -->
+            <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #2da4ff;">
+    <!-- Brand Logo -->
+    <a href="#" class="brand-link">
+      <img src="/dist/img/2500px-Vivo_Logo_svg1.ico" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8"/>
+      <span class="brand-text font-weight-light">Exam Portal </span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="/dist/img/user.png" class="img-circle elevation-2" alt="User Image"/>
+        </div>
+        <div class="info">
+          <a href="#" class="d-block"><asp:Label style="
+    font-family: 'Dancing Script', cursive;
+    font-size: 18px;
+    font-weight: bolder;
+    color: #fff;" ID="lblUsername" runat="server" Text=""></asp:Label></a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item has-treeview menu-open">
+            <a href="/Home.aspx" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <%--<ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="./index.html" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dashboard v1</p>
+                </a>
+              </li>
+            </ul>--%>
+          </li>
+           <li class="nav-header"></li>
+           <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <img src="/Icon/ExamMaintenance.png" alt="Alternate Text" width="30px" height="30px" />
+             <%-- <i style="color: #fff !important;" class="nav-icon fas fa-table"></i>--%>
+              <p style="color: #fff !important;">
+                Exam Maintenance
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item" id="AddQuestionBank" runat="server">
+                <a href="/Masters/AddExaminationQuestion.aspx" class="nav-link">
+                <img src="/Icon/question.png" alt="Alternate Text" width="30px" height="30px" />
+                 <%-- <i style="color: #fff !important;" class="nav-icon fas fa-user"></i>--%>
+                  <p style="color: #fff !important; font-size: 15px"> Add Question Bank</p>
+                </a>
+              </li>
+              <li class="nav-item" id="AddExam" runat="server">
+                <a href="/Masters/AddExam.aspx" class="nav-link">
+                 <img src="/Icon/private-instruction-icon.png" alt="Alternate Text" width="30px" height="30px" />
+                  <%--<i style="color: #fff !important;" class="nav-icon fas fa-user"></i>--%>
+                  <p style="color: #fff !important;"> Add Exam</p>
+                </a>
+              </li>
+               <li class="nav-item" id="AddExamInstruction" runat="server">
+                <a href="/Masters/AddExamInstruction.aspx" class="nav-link">
+                <img src="/Icon/instruction-icon-13.jpg" alt="Alternate Text" width="30px" height="30px" />
+                 <%-- <i style="color: #fff !important;" class="nav-icon fas fa-user"></i>--%>
+                  <p style="color: #fff !important; font-size: 15px"> Add Examination Instruction</p>
+                </a>
+              </li>
+               <li class="nav-item" id="ExaminationCode" runat="server">
+                <a href="/Masters/ExaminationCode.aspx" class="nav-link">
+                <img src="/Icon/instruction-icon-13.jpg" alt="Alternate Text" width="30px" height="30px" />
+                 <%-- <i style="color: #fff !important;" class="nav-icon fas fa-user"></i>--%>
+                  <p style="color: #fff !important; font-size: 15px"> ExaminationCode</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+     <li class="nav-item has-treeview" style="margin-top:10px" id="Department" runat="server">
+            <a href="#" class="nav-link">
+              <img src="/Icon/department.png" alt="Alternate Text" width="30px" height="30px" />
+             <%-- <i style="color: #fff !important;" class="nav-icon fas fa-table"></i>--%>
+              <p style="color: #fff !important;">
+                Manage Department
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+               <li class="nav-item">
+                <a href="/Masters/AddDepartment.aspx" class="nav-link">
+                <img src="/Icon/dept.png" alt="Alternate Text" width="30px" height="30px" />
+                 <%-- <i style="color: #fff !important;" class="nav-icon fas fa-user"></i>--%>
+                  <p style="color: #fff !important;"> Add Department</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/Masters/AddSubDepartment.aspx" class="nav-link">
+                <img src="/Icon/dept.png" alt="Alternate Text" width="30px" height="30px" />
+                 <%-- <i style="color: #fff !important;" class="nav-icon fas fa-user"></i>--%>
+                  <p style="color: #fff !important;"> Add Sub-Department</p>
+                </a>
+              </li>
+              <li class="nav-item" id="ExamCategory" runat="server">
+                <a href="/Masters/AddExamCategory.aspx" class="nav-link">
+                <img src="/Icon/dept.png" alt="Alternate Text" width="30px" height="30px" />
+                 <%-- <i style="color: #fff !important;" class="nav-icon fas fa-user"></i>--%>
+                  <p style="color: #fff !important;"> Add Exam Category</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+           
+           <li class="nav-item has-treeview" id="AddExamResult" runat="server">
+            <a href="/Masters/ExamResult.aspx" class="nav-link">
+              <img src="/Icon/ExamResult.png" alt="Alternate Text" width="30px" height="30px" />
+             <%-- <i style="color: #fff !important;" class="nav-icon fas fa-table"></i>--%>
+              <p style="color: #fff !important;">
+                Exam Result
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/Masters/ExamResult.aspx" class="nav-link">
+                 <img src="/Icon/private-instruction-icon.png" alt="Alternate Text" width="30px" height="30px" />
+                  <%--<i style="color: #fff !important;" class="nav-icon fas fa-user"></i>--%>
+                  <p style="color: #fff !important;"> View</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+       
+           <li class="nav-item has-treeview" id="AddExamResult_TrainingTream" runat="server">
+            <a href="/Masters/ExamResult_TrainingTeam.aspx" class="nav-link">
+              <img src="/Icon/ExamResult.png" alt="Alternate Text" width="30px" height="30px" />
+             <%-- <i style="color: #fff !important;" class="nav-icon fas fa-table"></i>--%>
+              <p style="color: #fff !important;">
+                Exam Result
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/Masters/ExamResult_TrainingTeam.aspx" class="nav-link">
+                 <img src="/Icon/private-instruction-icon.png" alt="Alternate Text" width="30px" height="30px" />
+                  <%--<i style="color: #fff !important;" class="nav-icon fas fa-user"></i>--%>
+                  <p style="color: #fff !important;"> View</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+           
+          <li class="nav-item has-treeview" style="margin-top:8px">
+            <a href="#" class="nav-link">
+             <img src="/Icon/AuthenticationUser.png" alt="Alternate Text" width="30px" height="30px" />
+            <%--  <i style="color: #fff !important;" class="nav-icon fas fa-user-plus"></i>--%>
+              <p style="color: #fff !important;">
+                Authentication
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item" id="AddWebuser" runat="server">
+                <a href="/User/AddWebUser.aspx" class="nav-link">
+                  <%--<i style="color: #fff !important;" class="nav-icon fas fa-user"></i>--%>
+                  <img src="/Icon/user-27-2-512.png" alt="Alternate Text" width="30px" height="30px" />
+                  <p style="color: #fff !important;"> Add Web User</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/User/AddAppUser.aspx" class="nav-link">
+                  <%--<i style="color: #fff !important;" class="nav-icon"></i>--%>
+                  <img src="/Icon/android-phone-color.jpg" alt="Alternate Text" width="30px" height="30px" />
+                  <p style="color: #fff !important;"> Add App User</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        
+            <li class="nav-header" style="color: #fff !important; font-size: 18px">Go to Feedback Module</li>
+     
+           <li class="nav-item">
+            <a href="/User/ChangePassword.aspx" id="GotoFeedbackURL" runat="server" class="nav-link">
+              <i class="nav-icon far fa-circle text-info" width="30px" height="30px"></i>
+              <p style="color: #fff !important;"> Go to Feedback</p>
+            </a>
+          </li>
+
+          <li class="nav-header" style="color: #fff !important; font-size: 18px">User</li>
+         <%--  <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-circle text-info" width="30px" height="30px"></i>
+              <p style="color: #fff !important; font-size: 14px">Change Password</p>
+            </a>
+          </li>--%>
+           <li class="nav-item">
+            <a href="/User/ChangePassword.aspx" class="nav-link">
+              <i class="nav-icon far fa-circle text-info" width="30px" height="30px"></i>
+              <p style="color: #fff !important;"> Change Password</p>
+            </a>
+          </li>
+           <li class="nav-item">
+            <a href="/Logout.aspx" class="nav-link">
+              <i class="nav-icon far fa-circle text-info" width="30px" height="30px"></i>
+              <p style="color: #fff !important; font-size: 14px">LogOut</p>
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+            <!-- Content Wrapper. Contains page content -->
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <!-- /.content -->
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+    <strong>&copy; Vivo Mobile India</strong>
+  </footer>
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+            <!-- /.control-sidebar -->
+        </div>
+        <!-- ./wrapper -->
+        <!-- jQuery -->
+        <script src="../plugins/jquery/jquery.min.js"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="../plugins/jquery-ui/jquery-ui.min.js"></script>
+        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+        <script>
+            $.widget.bridge('uibutton', $.ui.button)
+        </script>
+        <!-- Bootstrap 4 -->
+        <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- ChartJS -->
+        <script src="../plugins/chart.js/Chart.min.js"></script>
+        <!-- Sparkline -->
+        <script src="../plugins/sparklines/sparkline.js"></script>
+        <!-- JQVMap -->
+        <script src="../plugins/jqvmap/jquery.vmap.min.js"></script>
+        <script src="../plugins/jqvmap/maps/jquery.vmap.world.js"></script>
+        <!-- jQuery Knob Chart -->
+        <script src="../plugins/jquery-knob/jquery.knob.min.js"></script>
+        <!-- daterangepicker -->
+        <script src="../plugins/moment/moment.min.js"></script>
+        <script src="../plugins/daterangepicker/daterangepicker.js"></script>
+        <!-- Tempusdominus Bootstrap 4 -->
+        <script src="../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+        <!-- Summernote -->
+        <script src="../plugins/summernote/summernote-bs4.min.js"></script>
+        <!-- overlayScrollbars -->
+        <script src="../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+        <!-- FastClick -->
+        <script src="../plugins/fastclick/fastclick.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../dist/js/adminlte.js"></script>
+        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+        <script src="../dist/js/pages/dashboard.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="../dist/js/demo.js"></script>
+        <script type="text/javascript">
+            //            $(document).ready(function () {
+            //                $('ul li a').mouseenter(function () {
+            //                    $('li a').removeClass("active");
+            //                    $(this).addClass("active");
+            //                });
+            //            });
+            $(function () {
+                var current = location.pathname;
+                $('ul li a ').each(function () {
+                    var thi1s = $(this);
+                    // if the current path is like this link, make it active
+                    if (thi1s.attr('href').indexOf(current) !== -1) {
+                        thi1s.addClass('active');
+                    }
+                });
+
+                $('ul li ul').each(function () {
+                    var thi1s = $(this);
+                    // if the current path is like this link, make it active
+                    if (thi1s.attr('href').indexOf(current) !== -1) {
+                        thi1s.addClass('active');
+                    }
+                });
+            });
+        </script>
+    </div>
+    </form>
+</body>
+</html>
